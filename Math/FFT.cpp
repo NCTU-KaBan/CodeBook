@@ -1,38 +1,59 @@
 #include <bits/stdc++.h>
 using namespace std;
-const double pi = atan(1.0)*4;
-struct Complex {
-    long double x,y;
-    Complex(long double _x=0,long double _y=0)
-        :x(_x),y(_y) {}
-    Complex operator + (Complex &tt) { return Complex(x+tt.x,y+tt.y); }
-    Complex operator - (Complex &tt) { return Complex(x-tt.x,y-tt.y); }
-    Complex operator * (Complex &tt) { return Complex(x*tt.x-y*tt.y,x*tt.y+y*tt.x); }
+typedef double D;
+const D PI = acos(-1.0);
+struct C{
+    D x,y;C(){x=0,y=0;}C(D x,D y):x(x),y(y){}
+    C operator+(const C&c){return C(x+c.x,y+c.y);}
+    C operator-(const C&c){return C(x-c.x,y-c.y);}
+    C operator*(const C&c){return C(x*c.x-y*c.y,x*c.y+y*c.x);}
 };
-void FFT(Complex *a, int n, int rev) {
-    // n是大于等于相乘的两个数组长度的2的幂次
-    // 从0开始表示长度，对a进行操作
-    // rev==1进行DFT，==-1进行IDFT
-    for (int i = 1,j = 0; i < n; ++ i) {
-        for (int k = n>>1; k > (j^=k); k >>= 1);
-        if (i<j) swap(a[i],a[j]);
-    }
-    for (int m = 2; m <= n; m <<= 1) {
-        Complex wm(cos(2*pi*rev/m),sin(2*pi*rev/m));
-        for (int i = 0; i < n; i += m) {
-            Complex w(1.0,0.0);
-            for (int j = i; j < i+m/2; ++ j) {
-                Complex t = w*a[j+m/2];
-                a[j+m/2] = a[j] - t;
-                a[j] = a[j] + t;
-                w = w * wm;
-            }
-        }
-    }
-    if (rev==-1) {
-        for (int i = 0; i < n; ++ i) a[i].x /= n,a[i].y /= n;
-    }
+void FFT(vector<C> &c, int t) {
+    int n = c.size();
+	for (int i = 1, j = 0 ; i < n ; i++) {
+		for (int k = (n >> 1) ; k > (j ^= k) ; k >>= 1);
+		if (i < j) swap(c[i], c[j]);
+	}
+	for (int m = 2 ; m <= n ; m <<= 1) {
+		C wm(cos(2 * PI * t / m), sin(2 * PI * t / m));
+		for (int k = 0 ; k < n ; k += m) {
+			C w(1.0, 0.0);
+			for (int j = 0 ; j < (m >> 1) ; j++) {
+				C u = c[k + j];
+				C t = w * c[k + j + (m >> 1)];
+				c[k + j] = u + t;
+				c[k + j + (m >> 1)] = u - t;
+				w = w * wm;
+			}
+		}
+	}
+	if (~t) return;
+	for (int i = 0 ; i < n ; i++)
+		c[i].x /= n, c[i].y /= n;
 }
-int main(){
-
+vector<int> multi(vector<int> &a, vector<int> &b) {
+    int maxLen = max(a.size(), b.size());
+    int n = 1; while (n < 2 * maxLen) n <<= 1;
+    vector<C> A(n), B(n), R(n);
+    for (int i = 0 ; i < a.size() ; i++) A[i].x = a[i];
+    for (int i = 0 ; i < b.size() ; i++) B[i].x = b[i];
+    FFT(A, 1); FFT(B, 1);
+    for (int i = 0 ; i < n ; i++) R[i] = A[i] * B[i];
+    FFT(R, -1);
+    vector<int> ret(n);
+    for (int i = 0 ; i < n ; i++) ret[i] = int(R[i].x + .5);
+    return ret;
+}
+int main() { ios_base::sync_with_stdio(false); cin.tie(0);
+    stringstream ss;
+    string sa; getline(cin, sa);
+    string sb; getline(cin, sb);
+    vector<int> A, B, C;
+    int tmp;
+    ss.clear(); ss << sa;
+    while (ss >> tmp) A.push_back(tmp);
+    ss.clear(); ss << sb;
+    while (ss >> tmp) B.push_back(tmp);
+    C = multi(A, B);
+    for (auto c : C) cout << c << ' '; cout << '\n';
 }
