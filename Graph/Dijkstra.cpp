@@ -1,39 +1,49 @@
 #include <bits/stdc++.h>
+#define F first
+#define S second
 using namespace std;
-typedef long long LL;
-struct Edge {
-    int v; LL w;
-    bool operator < (const Edge &e) const {
-        return w > e.w;
-    }
-};
-const LL INF = 0x3f3f3f3f3f3f3f3fLL;
-vector<LL> Dijkstra(vector<vector<Edge> > &G, int s) {
-    vector<LL> d(G.size(), INF);
-    priority_queue<Edge> pq;
-    d[s] = 0; pq.push({s, d[s]});
+const int INF = 0x3f3f3f3f;
+vector<double> Dijkstra(vector<vector<pair<int, double> > > &G, int s, int t) {
+    vector<double> d(G.size(), INF);
+    vector<bool> done(G.size(), false);
+    priority_queue<pair<double, int> > pq;
+    d[s] = 0; pq.push({-d[s], s});
     while (pq.size()) {
-        Edge p = pq.top(); pq.pop();
-        if (d[p.v] < p.w) continue;
-        for (auto e : G[p.v]) {
-            if (d[e.v] < d[p.v] + e.w) continue;
-            d[e.v] = d[p.v] + e.w;
-            pq.push({e.v, d[e.v]});
+        pair<double, int> p = pq.top(); pq.pop();
+        int u = p.second; done[u] = true;
+        for (auto e : G[u]) {
+            if (d[e.first] < d[u] + e.second) continue;
+            d[e.first] = d[u] + e.second;
+            if (!done[e.first])
+                pq.push({-d[e.first], e.first});
         }
     }
     return d;
 }
+double dist(pair<double, double> &p_1, pair<double, double> &p_2) {
+    double res = 0;
+    res += (p_1.F - p_2.F) * (p_1.F - p_2.F);
+    res += (p_1.S - p_2.S) * (p_1.S - p_2.S);
+    return sqrt(res);
+}
 int main() {
-    ios_base::sync_with_stdio(false); cin.tie(0);
-    int n, m; while (cin >> n >> m) {
-        vector<vector<Edge> > G(n);
-        while (m--) {
-            int u, v; LL w; cin >> u >> v >> w;
-            G[u].push_back({v, w});
-            G[v].push_back({u, w});
+    int kase = 0;
+    int n; while (cin >> n && n) {
+        cout << "Scenario #" << ++kase << '\n';
+        cout << "Frog Distance = ";
+        vector<pair<double, double> > data(n);
+        for (auto &p : data)
+            cin >> p.F >> p.S;
+        vector<vector<pair<int, double> > > G(n);
+        for (int i = 0 ; i < n ; i++) {
+            for (int j = 0 ; j < n ; j++) {
+                if (i == j) continue;
+                G[i].push_back({j, dist(data[i], data[j])});
+                G[j].push_back({i, dist(data[i], data[j])});
+            }
         }
-        int s, t; cin >> s >> t;
-        vector<LL> d = Dijkstra(G, s);
-        cout << (d[t] != INF ? d[t] : -1) << '\n';
+        vector<double> d = Dijkstra(G, 0, 1);
+        cout << fixed << setprecision(3) << d[1] << '\n';
+        cout << '\n';
     }
 }
