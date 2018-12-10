@@ -1,5 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
 string minStringRotate(string s){
     int n = s.length();
     s += s;
@@ -13,9 +11,4 @@ string minStringRotate(string s){
     }
     int ans = i < n ? i : j;
     return s.substr(ans, n);
-}
-int main() {
-    string s; while (cin >> s) {
-        cout << minStringRotate(s) << '\n';
-    }
 }

@@ -1,5 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
 const int MAXN = 1000;
 long long int PHI[MAXN + 1];
 void PHITable(){

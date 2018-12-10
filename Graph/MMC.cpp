@@ -1,9 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef pair<int, int> pii;
-#define F first
-#define S second
-#define MP make_pair
 const int MAXN = 55;
 const double INF = 0x3f3f3f3f;
 const double EPS = 1e-4;

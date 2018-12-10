@@ -1,5 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
 const int MAX = 1020304;
 int ct[MAX], he[MAX], rk[MAX];
 int sa[MAX], tsa[MAX], tp[MAX][2];
@@ -43,18 +41,4 @@ void suffix_array(char *ip){
 		}
 		he[rk[i]]=h;
 	}
-}
-const int MAXLEN = 1e5 + 5;
-int main() {
-    int t; cin >> t; while (t--) {
-        char s[MAXLEN]; cin >> s;
-        suffix_array(s);
-        int len = strlen(s);
-        int ans = 0;
-        for (int i = 2 ; i < len ; i++) {
-            ans += abs(he[i - 1] - he[i]);
-        }
-        ans += he[len - 1];
-        cout << ans << '\n';
-    }
 }

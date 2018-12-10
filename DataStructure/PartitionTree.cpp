@@ -1,5 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
 const int MAXN = 50005;
 const int lgN = __log(MAXN) + 5;
 struct PT{
@@ -57,14 +55,10 @@ struct PT{
     }
 }_PT;
 int main(){
-    int n;
-    int q;
-    cin >> n >> q;
+    int n, q; cin >> n >> q;
     _PT.Insert(n);
-
     for (int i = 0 ; i < q;  i++){
-        int x, y, k;
-        cin >> x >> y >> k;
+        int x, y, k; cin >> x >> y >> k;
         cout << _PT.query(x-1, y-1, k) << '\n';
     }
 }

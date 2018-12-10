@@ -1,4 +1,4 @@
-t int MAXN = 105;
+const int MAXN = 105;
 int best;
 int n;
 int num[MAXN];
@@ -32,7 +32,7 @@ int MaximumClique(){
     for(int i = n-1; i >= 0; i--){
         int k=0;
         for(int j = i+1; j < n; j++)
-            if (g[i][j]) adj[k++] = j;
+            if (G[i][j]) adj[k++] = j;
         dfs( adj, k, 1 );
         num[i] = best;
     }

@@ -1,7 +1,4 @@
-#include<bits/stdc++.h>
 #define REP(i,n) for(int i=0;i<n;i++)
-using namespace std;
-typedef long long LL;
 const int N=200100;
 int n,m;
 struct PT {int x,y,z,w,id;}p[N];

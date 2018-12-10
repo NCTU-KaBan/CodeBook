@@ -1,9 +1,3 @@
-// #include <bits/stdc++.h>
-#include <iostream>
-#include <cstring>
-#include <vector>
-#include <stack>
-using namespace std;
 const int MAXN = 1e3 + 5;
 struct Graph { 
     int V;

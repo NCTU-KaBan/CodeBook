@@ -1,5 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
 struct djs {
     vector<int> pa; int n;
     djs(int _n) : n(_n) { pa.resize(n, -1); }
@@ -12,6 +10,3 @@ struct djs {
         return true;
     }
 };
-int main() {
-
-}

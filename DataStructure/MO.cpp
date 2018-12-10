@@ -1,12 +1,6 @@
-#pragma GCC optimize ("O3")
-#include <bits/stdc++.h>
-#define F first
-#define S second
-using namespace std;
 const int MAXN = 1e5 + 5;
 const int MAXV = 1e5 + 5;
 const int MAXQ = 1e6 + 5;
-typedef pair<int, int> pii;
 struct MO {
     struct Q {
         int l, r, id, b;

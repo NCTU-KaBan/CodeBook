@@ -1,5 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
 template <typename T>
 struct Matrix {
     using vt = vector<T>;
@@ -53,6 +51,3 @@ struct Matrix {
         return det;
     }
 };
-int main() {
-
-}

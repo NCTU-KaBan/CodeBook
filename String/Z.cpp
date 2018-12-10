@@ -1,5 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
 void ZAlg(char *s, int *Z){
     Z[0] = strlen(s);
     for (int L = 0, R = 0, i = 1; s[i] ; i++){
@@ -10,6 +8,4 @@ void ZAlg(char *s, int *Z){
             Z[i] = (R--) - L;
         }
     }
-}
-int main(){
 }

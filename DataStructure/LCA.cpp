@@ -1,8 +1,5 @@
-#include <bits/stdc++.h>
-using namespace std;
 const int MAXN = 1e5 + 5;
 const int lgN  = __lg(MAXN) + 5;
-const int INF = 0x3f3f3f3f;
 struct Tree {
     struct Node : vector<Node*>{
         int dep, v;
@@ -51,22 +48,3 @@ struct Tree {
         return ans = max({ans, u->maxV[0], v->maxV[0]});
     }
 };
-int main() { ios_base::sync_with_stdio(false); cin.tie(0);
-    int t; cin >> t; while (t--) {
-        int n; cin >> n;
-        Tree *T = new Tree(n);
-        for (int i = 0 ; i < n - 1 ; i++) {
-            int u, v; cin >> u >> v;
-            T->addEdge(u - 1, v - 1);
-        }
-        for (int i = 0 ; i < n ; i++)
-            cin >> T->node[i]->v;
-        T->solve();
-        int q; cin >> q;
-        while (q--) {
-            int u, v; cin >> u >> v;
-            cout << T->query(u - 1, v - 1) << '\n';
-        }
-        delete T;
-    }
-}

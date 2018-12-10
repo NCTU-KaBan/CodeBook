@@ -1,5 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
 const int BASE  = 1e9 + 0.5;
 const int WIDTH = log10(BASE) + 0.5;
 template <typename T>
@@ -135,6 +133,3 @@ struct bigN : vector<LL> {
         return ss >> res, res;
     }
 };
-int main() {
-
-}

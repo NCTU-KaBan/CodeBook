@@ -1,10 +1,3 @@
-#include <iostream>
-#include <cmath>
-#include <algorithm>
-#include <vector>
-
-using namespace std;
-
 #define EPS 1e-12
 #define LEFT_TOP POS(1000, 1000)
 #define NO_INTERSECT POS(-1234, -1234)

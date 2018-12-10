@@ -1,8 +1,3 @@
-//#include <bits/stdc++.h>
-#include <iostream>
-#include <utility>
-using namespace std;
-typedef long long LL;
 LL extgcd(LL a, LL b, LL &x, LL &y){
     LL d = a;
     if (b != 0){
@@ -29,7 +24,4 @@ pLL CRT(LL *A, LL *B, LL *M, int n){
     }
     x = (x % m + m) % m;
     return pLL(x, m);
-}
-int main(){
-
 }

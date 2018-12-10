@@ -1,9 +1,3 @@
-// #include <bits/stdc++.h>
-#include <iostream>
-#include <stack>
-#include <cstring>
-#include <vector>
-using namespace std;
 const int MAXN = 1e5 + 5;
 struct Graph{
     struct Node : vector<Node*> {
@@ -51,7 +45,4 @@ struct Graph{
             scc_num++;
         }
     }
-}
-int main() { 
-
-}
+};

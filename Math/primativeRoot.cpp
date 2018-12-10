@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long LL;
 LL modPow(LL a, LL x, LL m){
     if (x == 0) return 1;
     LL k = modPow(a, x / 2, m);

@@ -1,7 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define PB push_back
-typedef long long LL;
 const LL INF = 0x3f3f3f3f3f3f3f3f;
 const int MAXN = 1e3 + 5;
 const int MAXM = (MAXN * MAXN) / 2;
@@ -69,16 +65,3 @@ struct Graph{
         return flow;
     }
 };
-int main(){ ios_base::sync_with_stdio(false); cin.tie(0);
-    int kase = 0, n; while (cin >> n && n) {
-        cout << "Network " << ++kase << '\n';
-        Graph *G = new Graph(n);
-        int s, t, m; cin >> s >> t >> m;
-        while (m--) {
-            int u, v; LL c;
-            cin >> u >> v >> c;
-            G->addEdge(u - 1, v - 1, c);
-        }
-        cout << "The bandwidth is " << G->maxFlow(s - 1, t - 1) << ".\n\n";
-    }
-}

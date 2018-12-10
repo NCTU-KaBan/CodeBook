@@ -1,6 +1,3 @@
-
-#include <bits/stdc++.h>
-using namespace std;
 // SmartPointer
 template <typename T>
 struct _ptrCntr{

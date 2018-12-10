@@ -1,5 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
 const int SIGMA = 26;
 struct SAM {
     struct Node {
@@ -40,7 +38,3 @@ struct SAM {
         return true;
     }
 };
-const int MAXLEN = 1e5 + 5;
-int main() {
-
-}

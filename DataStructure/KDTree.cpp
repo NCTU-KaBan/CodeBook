@@ -1,6 +1,4 @@
-#include <bits/stdc++.h>
 #define MAXN 50100
-using namespace std;
 inline long long sq(long long x){return x*x;}
 const double alpha=0.75;
 int W,H,rx[MAXN],ry[MAXN];

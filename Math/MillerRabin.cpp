@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long LL;
 LL modMul(LL a, LL b, LL m){
     a %= m, b %= m;
     LL y = (LL)((double)a * b/ m + .5);
@@ -37,10 +34,4 @@ inline bool isPrime(T n, int *sprp, int num){
         return false;
     }
     return true;
-}
-
-int main(){
-    for (int i = 1 ; i < 100 ; i++)
-        if (isPrime(i, llsprp, 7))
-            cout << i << '\n';
 }

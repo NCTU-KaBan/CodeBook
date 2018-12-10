@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-const int MAXLEN = 1e6 + 5;
 int F[MAXLEN];
 void build(char *s){
     F[0] = -1;
@@ -18,12 +15,4 @@ bool match(char *_find, char *content){
         if (pos + 1 == findLen) return true;
     }
     return false;
-}
-int main(){
-    while (1){
-        char input[MAXLEN], search[MAXLEN];
-        cin >> input >> search;
-        build(input);
-        cout << match(input, search) << '\n';
-    }
 }

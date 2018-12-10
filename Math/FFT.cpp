@@ -1,5 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
 typedef double D;
 const D PI = acos(-1.0);
 struct C{
@@ -43,17 +41,4 @@ vector<int> multi(vector<int> &a, vector<int> &b) {
     vector<int> ret(n);
     for (int i = 0 ; i < n ; i++) ret[i] = int(R[i].x + .5);
     return ret;
-}
-int main() { ios_base::sync_with_stdio(false); cin.tie(0);
-    stringstream ss;
-    string sa; getline(cin, sa);
-    string sb; getline(cin, sb);
-    vector<int> A, B, C;
-    int tmp;
-    ss.clear(); ss << sa;
-    while (ss >> tmp) A.push_back(tmp);
-    ss.clear(); ss << sb;
-    while (ss >> tmp) B.push_back(tmp);
-    C = multi(A, B);
-    for (auto c : C) cout << c << ' '; cout << '\n';
 }

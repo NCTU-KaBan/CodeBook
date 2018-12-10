@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define PB push_back
 const int SIGMA = 26;
 inline int idx(char c){ return c - 'a'; }
 struct Eertree{
@@ -48,13 +45,3 @@ struct Eertree{
         last = u->n[idx(c)];
     }
 };
-const int MAXLEN = 100;
-int main(){
-    char input[MAXLEN];
-    while (cin >> input){
-        Eertree *sol = new Eertree(input);
-        cout << sol->maxLen << '\n';
-        cout << sol->sz << '\n';
-    }
-}
-

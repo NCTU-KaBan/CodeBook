@@ -1,5 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
 const int SIGMA = 26;
 const int MAXLEN = 1e5;
 struct ACAutomaton{
@@ -74,6 +72,3 @@ struct ACAutomaton{
     }
     
 };
-int main(){
-
-}

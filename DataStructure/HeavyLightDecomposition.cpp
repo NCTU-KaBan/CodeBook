@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define PB push_back
 const int MAXN = 1e3 + 5;
 struct Tree{
     struct Node; struct Edge; int V;
@@ -46,16 +43,6 @@ struct Tree{
             dfs_link(v, v);
         }
     }
-    void Print() {
-        cout << "\tid\tsz\tdep\tpa\ttop\thc\n";
-        for (int i = 0; i < V ; i++) {
-            Node *u = node[i];
-            cout << "G[" << i << "]:\t" << u->id << '\t' << u->sz
-                << '\t' << u->dep << '\t' << ( u->pa ? u->pa - _memN : -1 )
-                << '\t' << ( u->top ? u->top - _memN : -1 ) << '\t'
-                << ( u->hc ? u->hc - _memN : -1 ) << '\n';
-        }
-    }
     Node* query(int _u, int _v) {
         Node *u = node[_u], *v = node[_v];
         Node *uTop = u->top, *vTop = v->top;
@@ -69,13 +56,3 @@ struct Tree{
         return u->dep < v->dep ? u : v; // LCA
     }
 };
-int main() {
-    int n; cin >> n;
-    Tree *G = new Tree(n);
-    for (int i = 0 ; i < n - 1 ; i++){
-        int u, v; cin >> u >> v;
-        G->addEdge(u, v);
-    }
-    G->HLD();
-    G->Print();
-}

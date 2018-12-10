@@ -1,11 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-#define PB push_back
-#define MP make_pair
-#define F first
-#define S second
-typedef long long LL;
-typedef pair<LL, LL> pLL;
 const int MAXN = 300;
 const int MAXM = MAXN * MAXN * 2;
 const LL INF = 0x3f3f3f3f3f3f3f3f;
@@ -64,6 +56,3 @@ struct Graph {
         return res;
     }
 };
-int main() {
-
-}

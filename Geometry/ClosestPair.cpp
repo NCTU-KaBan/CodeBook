@@ -1,7 +1,3 @@
-#include<cmath>
-#include<vector>
-#include<algorithm>
-using namespace std;
 template<typename T>
 struct point{
 	T x,y;

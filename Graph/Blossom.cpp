@@ -1,8 +1,5 @@
-#include <bits/stdc++.h>
-using namespace std;
 const int MAXN = 250 + 5;
 const int MAXM = MAXN * MAXN / 2;
-#define PB push_back
 struct Graph {
     struct Node; struct Edge;
     int V;
@@ -83,6 +80,3 @@ struct Graph {
         }
     }
 };
-int main() {
-
-}

@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long LL;
 typedef struct Edge {
     int v; LL w;
     bool operator > (const Edge &b) const {
@@ -25,20 +22,5 @@ void Dijkstra(int n, vector<vector<Edge> > &G, vector<LL> &d, int s, int t = -1)
                 pq.push({e.v, d[e.v]});
             }
         }
-    }
-}
-int main() {
-    ios_base::sync_with_stdio(false); cin.tie(0);
-    int n, m; while (cin >> n >> m) {
-        vector<vector<Edge> > G(n);
-        while (m--) {
-            int u, v; LL w; cin >> u >> v >> w;
-            G[u].push_back({v, w});
-            G[v].push_back({u, w});
-        }
-        int s, t; cin >> s >> t;
-        vector<LL> d;
-        Dijkstra(n, G, d, s, t);
-        cout << (d[t] != INF ? d[t] : -1) << '\n';
     }
 }
