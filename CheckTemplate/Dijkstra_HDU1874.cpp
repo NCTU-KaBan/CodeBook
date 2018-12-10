@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 typedef long long LL;
 typedef struct Edge {
     int v; LL w;
@@ -7,7 +8,9 @@ typedef struct Edge {
         return w > b.w;
     }
 } State;
+
 const LL INF = 0x3f3f3f3f3f3f3f3fLL;
+
 void Dijkstra(int n, vector<vector<Edge> > &G, vector<LL> &d, int s, int t = -1) {
     static priority_queue<State, vector<State>, greater<State> > pq;
     d.clear(); d.resize(n);
@@ -27,6 +30,7 @@ void Dijkstra(int n, vector<vector<Edge> > &G, vector<LL> &d, int s, int t = -1)
         }
     }
 }
+
 int main() {
     ios_base::sync_with_stdio(false); cin.tie(0);
     int n, m; while (cin >> n >> m) {
