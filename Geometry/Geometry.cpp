@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cmath>
 #include <algorithm>
 #include <vector>
@@ -64,6 +65,7 @@ public:
 T dot(POS p, POS q)     { return p.x*q.x+p.y*q.y; }
 
 T dist2(POS p, POS q)   { return dot(p-q,p-q); }
+double dist(POS p, POS q) { return sqrt(dist2(p, q)); }
 
 // rotate a point CCW or CW around the origin
 POS RotateCCW90(POS p)   { return POS(-p.y,p.x); }
@@ -219,11 +221,13 @@ public:
 };
 
 POS ComputeCircleCenter(POS a, POS b, POS c) {
-  b=(a+b)/2;
-  c=(a+c)/2;
-  LINE l1 = LINE(b, b+RotateCW90(a-b));
-  LINE l2 = LINE(c, c+RotateCW90(a-c));
-  return l1.intersect(l2);
+	POS ret;
+	double A1 = b.x - a.x, B1 = b.y - a.y, C1 = (A1 * A1 + B1 * B1) / 2;
+	double A2 = c.x - a.x, B2 = c.y - a.y, C2 = (A2 * A2 + B2 * B2) / 2;
+	double D = A1 * B2 - A2 * B1;
+	ret.x = a.x + (C1 * B2 - C2 * B1) / D;
+	ret.y = a.y + (A1 * C2 - A2 * C1) / D;
+	return ret;
 }
 
 class LINESEG : public LINE {
