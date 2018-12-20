@@ -5,7 +5,7 @@ double min_mean_cycle(vector<vector<pii> > &G) {
     int n = G.size(); G.resize(n + 1);
     for (int i = 0 ; i < n ; i++)
         G[n].push_back(MP(i, 0));
-    double d[MAXN][MAXN];
+    double d[MAXN][MAXN];   // dp[i][j] := 從起點到j走i條的最短路徑
     int s = n++;
     for (int i = 0 ; i <= n ; i++)
         for (int j = 0 ; j < n ; j++)
