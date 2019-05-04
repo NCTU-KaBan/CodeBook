@@ -10,7 +10,7 @@ struct SegmentTree {
     Node* build(int L, int R, vector<int> &arr) {
         Node *u = new Node(L, R); int M = (L + R) >> 1;
         if (R - L == 1) return /*basic data,*/ u;
-        return u->l = build(L, M, arr); u->r = build(M, R, arr), pull(u);
+        return u->l = build(L, M, arr), u->r = build(M, R, arr), pull(u);
     }
     Node* pull(Node *u) { return pull(u, u->l, u->r); }
     Node* pull(Node *u, Node *l, Node *r) {
@@ -23,7 +23,7 @@ struct SegmentTree {
         // push function
     }
     Node* query(int qL, int qR, Node *u = NULL) {
-        if (!u) u = rt, buf = ptr;
+        if (!u) u = rt, ptr = buf;
         if (qR <= u->L || u->R <= qL) return (Node*)NULL;
         push(u); if (qL <= u->L && u->R <= qR) return u;
         return pull(ptr++, query(qL, qR, u->l), query(qL, qR, u->r));
